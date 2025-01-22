@@ -1,0 +1,39 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+annotated-types = "==0.7.0"
+anyio = "==4.7.0"
+babel = "==2.16.0"
+certifi = "==2024.12.14"
+charset-normalizer = "==3.4.0"
+colorama = "==0.4.6"
+distro = "==1.9.0"
+docxcompose = "==1.4.0"
+exceptiongroup = "==1.2.2"
+h11 = "==0.14.0"
+httpcore = "==1.0.7"
+httpx = "==0.28.1"
+idna = "==3.10"
+jiter = "==0.8.2"
+lxml = "==5.3.0"
+openai = "==1.58.1"
+pydantic-core = "==2.27.2"
+python-docx = "==1.1.2"
+requests = "==2.32.3"
+six = "==1.17.0"
+sniffio = "==1.3.1"
+tqdm = "==4.67.1"
+typing-extensions = "==4.12.2"
+urllib3 = "==2.3.0"
+uvicorn = "*"
+fastapi = "*"
+pydantic = "*"
+python-multipart = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
