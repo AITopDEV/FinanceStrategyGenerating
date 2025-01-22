@@ -1,0 +1,16 @@
+{  
+  "apps": [  
+    {  
+      "name": "backend",  
+      "script": "uvicorn fastapi_main:app",  
+      "args": " --host 0.0.0.0 --reload",  
+      "cwd": "./backend"  
+    },  
+    {  
+      "name": "frontend",  
+      "script": "npm",  
+      "args": "run dev",  
+      "cwd": "./frontend"  
+    }  
+  ]  
+}
