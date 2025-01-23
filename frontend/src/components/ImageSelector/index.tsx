@@ -1,5 +1,5 @@
 import './styles.css';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 
 interface ImageSelectorProps {
   onSelect: (imageIndex: number) => void;
@@ -9,8 +9,17 @@ interface ImageSelectorProps {
   };
 }
 
-const ImageSelector: React.FC<ImageSelectorProps> = ({ onSelect, addressImages }) => {
+const ImageSelector: React.FC<ImageSelectorProps> = ({
+  onSelect,
+  addressImages,
+}) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const imageUrls = useMemo(() => {
+    return addressImages.imagesData.map(
+      (item) =>
+        `${import.meta.env.VITE_SERVER_URL}/download?full_path=${item}&d=${new Date().toLocaleTimeString()}`,
+    );
+  }, [addressImages.imagesData]);
 
   useEffect(() => {
     const element = scrollContainerRef.current;
@@ -29,7 +38,9 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ onSelect, addressImages }
   }, []);
 
   const handleImageToggle = (imageUrl: string) => {
-    if (addressImages.selectedImage === addressImages.imagesData.indexOf(imageUrl)) {
+    if (
+      addressImages.selectedImage === addressImages.imagesData.indexOf(imageUrl)
+    ) {
       onSelect(-1);
     } else {
       onSelect(addressImages.imagesData.indexOf(imageUrl));
@@ -38,7 +49,10 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ onSelect, addressImages }
 
   return (
     <div className="w-full max-w-4xl">
-      <div ref={scrollContainerRef} className="custom-scrollbar overflow-x-auto pb-6">
+      <div
+        ref={scrollContainerRef}
+        className="custom-scrollbar overflow-x-auto pb-6"
+      >
         <div className="mt-4 flex gap-2">
           {addressImages.imagesData.map((image, index) => (
             <div key={index} className="flex-none">
@@ -52,11 +66,11 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ onSelect, addressImages }
               >
                 <div className="absolute left-4 top-4 mb-2">
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="imageSelect"
                     className="peer hidden"
                     checked={addressImages.selectedImage === index}
-                    onChange={() => handleImageToggle(image)}
+                    onChange={(e) => handleImageToggle(image)}
                   />
                   <div
                     className={`size-4 rounded-full border-2 border-[#109bff] bg-white
@@ -64,7 +78,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ onSelect, addressImages }
                   />
                 </div>
                 <img
-                  src={`http://localhost:8000/api/download?full_path=${image}`}
+                  src={imageUrls[index]}
                   alt={`Image ${index}`}
                   className="mt-8 h-[150px] w-[200px] rounded-md object-cover p-4"
                 />

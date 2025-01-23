@@ -6,7 +6,7 @@ import axios from "axios"
  * @param headers
  * @returns
  */
-export const createAxiosInstance = (headers = {}, baseURL = 'http://localhost:8000/api') => {
+export const createAxiosInstance = (headers = {}, baseURL = import.meta.env.VITE_SERVER_URL) => {
   /**
    * Create Axios Instance
    */

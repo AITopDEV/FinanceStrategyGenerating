@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { PiSpinnerGapLight, PiX } from 'react-icons/pi';
 
 interface FileUploadProps {
-  onFileSelect?: (files: File, file_type: string) => void;
+  onFileSelect?: (files: File| undefined, file_type: string) => void;
   accept?: Record<string, string[]>;
   maxSize?: number;
   title?: string;
@@ -51,7 +51,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
   useEffect(() => {
     if (uploadedFile && isUploading) {
-      console.log(`File uploaded: ${uploadedFile.name}`);
       setIsUploading(false);
     }
   }, [uploadedFile, isUploading]);
@@ -67,6 +66,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     setUploadedFile(null);
     setError('');
     setIsUploading(false);
+    onFileSelect?.(undefined, file_type)
   };
 
   const handleCancel = (e: React.MouseEvent) => {
@@ -131,6 +131,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
               </div>
             </>
           )}
+
         </div>
       </div>
     </div>
