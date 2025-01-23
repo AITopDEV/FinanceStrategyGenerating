@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi import FastAPI, UploadFile, Form
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
@@ -96,8 +96,8 @@ def write_file(file_info):
 
 
 @app.post("/api/generate-doc")
-async def generate_documents(files: List[UploadFile], picture_path: str = Form(...)):
-    print([i.filename for i in files])
+async def generate_documents(files: List[UploadFile], picture_path: str = Form(default="data/temp_word/title.png")):
+    print(picture_path)
     preliminary_assessment_path = write_file(files[0])
     credit_proposal_path = write_file(files[1])
     preliminary_assessment_result = parser_preliminary_assessment(
