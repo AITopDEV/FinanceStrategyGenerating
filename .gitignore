@@ -48,6 +48,7 @@ __pycache__
 /backend/credential/credential.ini
 /backend/src/parser/result.json
 /backend/src/image_integration/*.jpg
+/backend/data/house_pic/*.jpg
 
 *.rar
 *.pem
