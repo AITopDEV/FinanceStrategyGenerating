@@ -9,6 +9,9 @@ import { LuCircleX } from 'react-icons/lu';
 import { CiCircleCheck } from 'react-icons/ci';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import Loading from './Loading';
+import "react-toastify/ReactToastify.css"
+import { ToastContainer, toast } from 'react-toastify';
 
 interface filesType {
   preliminary_access: undefined | File;
@@ -20,12 +23,14 @@ interface imagesType {
   selectedImage: number;
 }
 
+
 function App() {
   const [files, setFiles] = useState<filesType>({
     preliminary_access: undefined,
     credit_proposal: undefined,
   });
 
+  const [loadingFlag, setLoadingFlag] = useState(false);
   const [address, setAddress] = useState('');
   const [addressImages, setAddressImages] = useState<imagesType>({
     imagesData: [],
@@ -48,9 +53,11 @@ function App() {
         credit_proposal: selectedFiles,
       });
     }
+    setGeneratedDoc('');
   };
 
   const handleGetPictures = () => {
+    setLoadingFlag(true);
     setAddressImages({
       ...addressImages,
       imagesData: [],
@@ -64,13 +71,18 @@ function App() {
           ...addressImages,
           imagesData: res.data.result.fileNames,
         });
+        setLoadingFlag(false);
+        toast.success("Successfully get address's pictures.")
       })
       .catch((error: any) => {
         console.log("Error occurred during get address's pictures", error);
+        setLoadingFlag(false);
+        toast.error("Error occurred during get address's pictures.")
       });
   };
 
   const handleGenerate = () => {
+    setLoadingFlag(true);
     const formData = new FormData();
     if (files.preliminary_access && files.credit_proposal) {
       formData.append('files', files.preliminary_access);
@@ -83,10 +95,16 @@ function App() {
       }
       axiosClient
         .post('/generate-doc', formData)
-        .then((res) => setGeneratedDoc(res.data.result.docPath))
-        .catch((error) =>
-          console.log('Error occurred during generating file:', error),
-        );
+        .then((res) => {
+          setGeneratedDoc(res.data.result.docPath);
+          setLoadingFlag(false);
+          toast.success("Successfully generated financial document.")
+        })
+        .catch((error) => {
+          console.log('Error occurred during generating file:', error);
+          setLoadingFlag(false);
+          toast.error("Error occurred during generated financial document.")
+        });
     } else {
       window.alert('Please select docs and image.');
     }
@@ -113,7 +131,10 @@ function App() {
   };
 
   return (
-    <div className="mt-2 flex max-h-screen flex-col items-center justify-center p-2 lg:p-10">
+    <div className="flex min-h-screen flex-col items-center justify-center px-2 lg:px-10 relative">
+      <ToastContainer
+        position='top-right'
+      />
       <div className="mb-4 text-2xl font-bold">Finance Strategy Generator</div>
       <div className="flex w-full max-w-4xl flex-col gap-4 sm:flex-row sm:justify-between">
         <FileUpload
@@ -154,9 +175,10 @@ function App() {
         Get pictures
       </button>
       <ImageSelector
-        onSelect={(imageIndex) =>
-          setAddressImages({ ...addressImages, selectedImage: imageIndex })
-        }
+        onSelect={(imageIndex) => {
+          setAddressImages({ ...addressImages, selectedImage: imageIndex });
+          setGeneratedDoc('');
+        }}
         addressImages={addressImages}
       />
       <button
@@ -167,8 +189,7 @@ function App() {
             'mx-4 mt-4 rounded-lg border px-4 py-2 text-white  focus:outline-none',
             'hover:bg-blue-400 bg-blue-500',
             {
-              'bg-blue-300 hover:bg-blue-300':
-                !files.credit_proposal || !files.preliminary_access,
+              'bg-blue-300 hover:bg-blue-300': !files.credit_proposal || !files.preliminary_access,
             },
           ),
         )}
@@ -188,7 +209,7 @@ function App() {
         </p>
         <button
           onClick={downloadFunction}
-          disabled={!files.credit_proposal || !files.preliminary_access}
+          disabled={!generatedDoc}
           className={twMerge(
             clsx(
               'mx-4 mt-4 rounded-lg border px-4 py-2 text-white  focus:outline-none ',
@@ -196,7 +217,7 @@ function App() {
               'hover:bg-blue-400 bg-blue-500',
               {
                 'bg-blue-300 hover:bg-blue-300':
-                  !files.credit_proposal || !files.preliminary_access,
+                  !generatedDoc,
               },
             ),
           )}
@@ -205,6 +226,11 @@ function App() {
           <span className="text-white">Download</span>
         </button>
       </div>
+      {loadingFlag && (
+        <div className="min-w-full min-h-full h-full absolute flex justify-center items-center bg-gray-500/25 inset-0 z-10">
+          <Loading type="spin" color="#3b82f6" />{' '}
+        </div>
+      )}
     </div>
   );
 }

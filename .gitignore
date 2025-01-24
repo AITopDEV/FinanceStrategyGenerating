@@ -43,6 +43,7 @@ yarn-error.log*
 /backend/data/result_word
 /backend/__pycache__
 /backend/.vscode
+/backend/uploads
 __pycache__
 
 /backend/credential/credential.ini
