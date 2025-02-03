@@ -182,7 +182,7 @@ def parser_doc(doc_path):
 
 
 if __name__ == '__main__':
-    filepath = '../../references/Preliminary Assessment/Delaney & Ralley - Preliminary Assessment.docx'
-    with open("../document_generation/data/result_preliminary_assessment.json", "w") as json_file:
-        json.dump(parser_doc(filepath), json_file, indent=4)
+    filepath = '../../references/Delaney & Ralley - Preliminary Assessment.docx'
+    # with open("../document_generation/result_preliminary_assessment.json", "w") as json_file:
+    #     json.dump(parser_doc(filepath), json_file, indent=4)
     print(parser_doc(filepath))

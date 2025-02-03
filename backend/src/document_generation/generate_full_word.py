@@ -206,7 +206,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
             new_run.font.size = Pt(12)  # Font size
             new_run.font.bold = True  # Bold text
             new_run.font.italic = False  # Italicize if needed
-            new_run.font.color.rgb = RGBColor(0, 0, 0)  
+            new_run.font.color.rgb = RGBColor(0, 0, 0)
 
         if placeholder_lender in full_text:
             # Replace the placeholder text
@@ -224,7 +224,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
             new_run.font.size = Pt(12)  # Font size
             new_run.font.bold = True  # Bold text
             new_run.font.italic = False  # Italicize if needed
-            new_run.font.color.rgb = RGBColor(0, 0, 0)  
+            new_run.font.color.rgb = RGBColor(0, 0, 0)
             # Replace placeholders in tables (if needed)
     for table in doc.tables:
         for row in table.rows:
@@ -248,7 +248,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
                         new_run.font.size = Pt(12)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     if placeholder_product_amount in full_text:
                         # Replace the placeholder text
@@ -267,7 +267,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
                         new_run.font.size = Pt(12)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     if placeholder_interest_rate in full_text:
                         # Replace the placeholder text
@@ -286,7 +286,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
                         new_run.font.size = Pt(12)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     if placeholder_repayment in full_text:
                         # Replace the placeholder text
@@ -304,7 +304,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
                         new_run.font.size = Pt(12)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     if placeholder_loan_term in full_text:
                         # Replace the placeholder text
@@ -322,8 +322,8 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
                         new_run.font.size = Pt(12)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
-    # Add a page break
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
+                        # Add a page break
     paragraph = doc.add_paragraph()  # Create a new paragraph
     run = paragraph.add_run()  # Add a run (a container for text)
     run.add_break(WD_BREAK.PAGE)  # Add a page break
@@ -356,7 +356,7 @@ def generate_product_comparison(doc, names, product_comparison, result_path):
             new_run.font.size = Pt(12)  # Font size
             new_run.font.bold = False  # Bold text
             new_run.font.italic = False  # Italicize if needed
-            new_run.font.color.rgb = RGBColor(0, 0, 0)  
+            new_run.font.color.rgb = RGBColor(0, 0, 0)
 
     transformed_data = {
         "Product providers": [],
@@ -464,7 +464,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
             new_run.font.size = Pt(12)  # Font size
             new_run.font.bold = False  # Bold text
             new_run.font.italic = False  # Italicize if needed
-            new_run.font.color.rgb = RGBColor(0, 0, 0)  
+            new_run.font.color.rgb = RGBColor(0, 0, 0)
 
     for table in doc.tables:
         for row in table.rows:
@@ -483,7 +483,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_refinance_amount = "«refinance_amount»"
                     if placeholder_refinance_amount in full_text:
@@ -497,7 +497,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_purchase_sd = "«purchase_sd»"
                     if placeholder_purchase_sd in full_text:
@@ -512,7 +512,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_registration_fee = "«registration_fee»"
                     if placeholder_registration_fee in full_text:
@@ -527,7 +527,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_mortgage_discharge_fee = "«mortgage_discharge_fee»"
                     if placeholder_mortgage_discharge_fee in full_text:
@@ -542,7 +542,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_transfer_fee = "«transfer_fee»"
                     if placeholder_transfer_fee in full_text:
@@ -557,7 +557,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_establishment_fee = "«establishment_fee»"
                     if placeholder_establishment_fee in full_text:
@@ -572,7 +572,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_legal_fee = "«legal_fee»"
                     if placeholder_legal_fee in full_text:
@@ -587,7 +587,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_foreign_buyer_surcharge = "«foreign_buyer_surcharge»"
                     if placeholder_foreign_buyer_surcharge in full_text:
@@ -602,7 +602,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_discharge_cost = "«discharge_cost»"
                     if placeholder_discharge_cost in full_text:
@@ -617,7 +617,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_lmi = "«lmi»"
                     if placeholder_lmi in full_text:
@@ -632,7 +632,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_fee_other = "«fee_other»"
                     if placeholder_fee_other in full_text:
@@ -647,7 +647,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_loan_requested = "«loan_requested»"
                     if placeholder_loan_requested in full_text:
@@ -662,7 +662,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_fhog = "«fhog»"
                     if placeholder_fhog in full_text:
@@ -677,7 +677,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_grossSaleProceeds = "«grossSaleProceeds»"
                     if placeholder_grossSaleProceeds in full_text:
@@ -692,7 +692,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_funds = "«funds»"
                     if placeholder_funds in full_text:
@@ -707,7 +707,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_debts = "«debts»"
                     if placeholder_debts in full_text:
@@ -722,7 +722,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_funds_subtotal = "«funds_subtotal»"
                     if placeholder_funds_subtotal in full_text:
@@ -737,7 +737,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_deposit_paid = "«deposit_paid»"
                     if placeholder_deposit_paid in full_text:
@@ -752,7 +752,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_funds_required = "«funds_required»"
                     if placeholder_funds_required in full_text:
@@ -767,7 +767,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_total_lend = "«total_lend»"
                     if placeholder_total_lend in full_text:
@@ -782,7 +782,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_total_security = "«total_security»"
                     if placeholder_total_security in full_text:
@@ -797,7 +797,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_lvr = "«lvr»"
                     if placeholder_lvr in full_text:
@@ -812,7 +812,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_funds_available = "«funds_available»"
                     if placeholder_funds_available in full_text:
@@ -827,7 +827,7 @@ def generate_funding_position(doc, names, funding_position, result_path):
                         new_run.font.size = Pt(8)  # Font size
                         new_run.font.bold = False  # Bold text
                         new_run.font.italic = False  # Italicize if needed
-                        new_run.font.color.rgb = RGBColor(0, 0, 0)  
+                        new_run.font.color.rgb = RGBColor(0, 0, 0)
 
                     placeholder_deficit_surplus_amount = "«deficit_surplus_amount»"
                     if placeholder_deficit_surplus_amount in full_text:

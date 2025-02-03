@@ -106,6 +106,7 @@ async def generate_documents(files: List[UploadFile], picture_path: str = Form(d
     credit_proposal_result = parser_credit_proposal(credit_proposal_path)
 
     generated_result = generate_content(
+        preliminary_assessment_result["name"],
         credit_proposal_result["requirements_objectives"],
         credit_proposal_result["reason"],
     )

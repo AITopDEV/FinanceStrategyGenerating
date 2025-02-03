@@ -11,8 +11,9 @@ class Content(BaseModel):
     reason: str
 
 
-def generate_content(requirements_content, reason_content, model=OpenAI_Model):
+def generate_content(names, requirements_content, reason_content, model=OpenAI_Model):
     try:
+        names_combined = " and ".join(names)
         client = OpenAI(api_key=OpenAI_Key)
         # Use the chat completion endpoint
         response = client.beta.chat.completions.parse(
@@ -26,10 +27,16 @@ def generate_content(requirements_content, reason_content, model=OpenAI_Model):
                     "role": "user",
                     "content": f"""You are a finance expert who turns complex requirements into detailed 
                                 recommendations for advisors.
-
+                                
+                                These are advisors' clients
+                                {names_combined}
+                                
                                 Please create a thorough financial report. Use the following inputs:  
                                 - REQUIREMENTS: {requirements_content}  
                                 - REASON FOR LENDER CHOICE: {reason_content}  
+                                
+                                The most important thing is that you shouldn't create your own statements, you have to 
+                                just specify the contents.
                                 
                                 Break the response down into these sections:  
                                 
@@ -93,6 +100,7 @@ def generate_content(requirements_content, reason_content, model=OpenAI_Model):
 
 
 if __name__ == "__main__":
+    names = ["Daniel", "Kaitlyn"]
     # Sample content to summarize
     requirements = """Daniel and Kaitlyn, as first-time homebuyers, you are seeking finance to purchase your first 
     home. You require a bank that will consider the family tax benefits that Kaitlyn is receiving from Centrelink to 
@@ -110,5 +118,5 @@ if __name__ == "__main__":
     require a comprehensive assessment of your application before approval."""
 
     # Call the summarize function
-    content = generate_content(requirements, reason)
+    content = generate_content(names, requirements, reason)
     print(content)
