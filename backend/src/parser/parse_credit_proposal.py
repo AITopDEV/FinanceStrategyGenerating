@@ -42,10 +42,11 @@ def parser_doc(doc_path):
     names = [name.strip() for name in doc.paragraphs[name_index].text.split('&')]
     doc_data["name"] = names
     doc_data["requirements_objectives"] = doc.paragraphs[requirements_objectives_index].text
-    doc_data["reason"] = " ".join(
-        doc.paragraphs[i].text.strip() for i in range(reason_start_index, reason_end_index + 1)
+    doc_data["reason"] = "\n - ".join(
+        doc.paragraphs[i].text.strip() + "\n" for i in range(reason_start_index, reason_end_index - 1)
         if doc.paragraphs[i].text.strip()
     )
+    doc_data["reason"] = doc_data["reason"] + "\n\n" + doc.paragraphs[reason_end_index - 1].text
     proposed_credit_app_table_index = 0
 
     for table_index, table in enumerate(doc.tables):
