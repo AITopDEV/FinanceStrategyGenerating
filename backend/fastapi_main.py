@@ -114,7 +114,6 @@ async def generate_documents(files: List[UploadFile], picture_path: str = Form(d
     credit_proposal_result["needs"] = generated_result["needs"]
     credit_proposal_result["requirements"] = generated_result["requirements"]
     credit_proposal_result["objectives"] = generated_result["objectives"]
-    credit_proposal_result["reason"] = generated_result["reason"]
 
     generate_full_docx(
         preliminary_assessment_result,
