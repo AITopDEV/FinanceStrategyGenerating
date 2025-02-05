@@ -84,9 +84,10 @@ function App() {
   const handleGenerate = () => {
     setLoadingFlag(true);
     const formData = new FormData();
-    if (files.preliminary_access && files.credit_proposal) {
+    if (files.preliminary_access && files.credit_proposal && !!address) {
       formData.append('files', files.preliminary_access);
       formData.append('files', files.credit_proposal);
+      formData.append('address', address);
       if (addressImages.selectedImage >= 0) {
         formData.append(
           'picture_path',
@@ -183,13 +184,13 @@ function App() {
       />
       <button
         onClick={handleGenerate}
-        disabled={!files.credit_proposal || !files.preliminary_access}
+        disabled={!files.credit_proposal || !files.preliminary_access || !address}
         className={twMerge(
           clsx(
             'mx-4 mt-4 rounded-lg border px-4 py-2 text-white  focus:outline-none',
             'hover:bg-blue-400 bg-blue-500',
             {
-              'bg-blue-300 hover:bg-blue-300': !files.credit_proposal || !files.preliminary_access,
+              'bg-blue-300 hover:bg-blue-300': !files.credit_proposal || !files.preliminary_access || !address,
             },
           ),
         )}

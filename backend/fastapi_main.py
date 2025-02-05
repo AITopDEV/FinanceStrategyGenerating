@@ -96,7 +96,8 @@ def write_file(file_info):
 
 
 @app.post("/api/generate-doc")
-async def generate_documents(files: List[UploadFile], picture_path: str = Form(default="data/temp_word/title.png")):
+async def generate_documents(files: List[UploadFile], picture_path: str = Form(default="data/temp_word/title.png"), address: str = Form()):
+    print("address data:", address)
     print(picture_path)
     preliminary_assessment_path = write_file(files[0])
     credit_proposal_path = write_file(files[1])
@@ -118,6 +119,7 @@ async def generate_documents(files: List[UploadFile], picture_path: str = Form(d
     generate_full_docx(
         preliminary_assessment_result,
         credit_proposal_result,
+        address,
         picture_path,
         "data/temp_word",
         "data/result_word",

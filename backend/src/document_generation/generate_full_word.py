@@ -175,7 +175,7 @@ def generate_product_selection(doc, result_path):
     return doc
 
 
-def generate_highlight_solution(doc, proposed_credit_application, result_path):
+def generate_highlight_solution(doc, proposed_credit_application, security_address, result_path):
     # Replace placeholder with the combined names
     placeholder_name = "«clientNames»"
     placeholder_lender = "«lender»"
@@ -184,6 +184,7 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
     placeholder_interest_rate = "«rateCard»"
     placeholder_repayment = "«repaymentCard»"
     placeholder_loan_term = "«loanTerm»"
+    placeholder_security = "«address»"
     # Update font in paragraphs
     for paragraph in doc.paragraphs:
         # Combine the text in all runs of the paragraph
@@ -193,6 +194,25 @@ def generate_highlight_solution(doc, proposed_credit_application, result_path):
         if placeholder_name in full_text:
             # Replace the placeholder text
             full_text = full_text.replace(placeholder_name, proposed_credit_application["application name"])
+
+            # Clear all the existing runs in the paragraph
+            for run in paragraph.runs:
+                run.text = ""
+
+                # Add a single new run with the updated text
+            new_run = paragraph.add_run(full_text)
+
+            # Set font attributes for the entire replaced text
+            new_run.font.name = 'Nunito Sans'  # Font type
+            new_run.font.size = Pt(12)  # Font size
+            new_run.font.bold = True  # Bold text
+            new_run.font.italic = False  # Italicize if needed
+            new_run.font.color.rgb = RGBColor(0, 0, 0)
+
+        # Check if the placeholder is in the full text
+        if placeholder_security in full_text:
+            # Replace the placeholder text
+            full_text = full_text.replace(placeholder_security, security_address)
 
             # Clear all the existing runs in the paragraph
             for run in paragraph.runs:
@@ -905,7 +925,7 @@ def merge_docx(input_files, output_file):
     return merged_document
 
 
-def generate_full_docx(preliminary_assessment, credit_proposal, pic_path, temp_path, result_path):
+def generate_full_docx(preliminary_assessment, credit_proposal, security_address, pic_path, temp_path, result_path):
     doc_title = Document(temp_path + "/1.title.docx")
     generate_title(doc_title, preliminary_assessment["name"], pic_path, result_path)
 
@@ -924,7 +944,7 @@ def generate_full_docx(preliminary_assessment, credit_proposal, pic_path, temp_p
     generate_product_selection(doc_content, result_path)
 
     doc_highlight_solution = Document(temp_path + "/5.highlight_solution.docx")
-    generate_highlight_solution(doc_highlight_solution, credit_proposal["proposed_credit_application"], result_path)
+    generate_highlight_solution(doc_highlight_solution, credit_proposal["proposed_credit_application"], security_address, result_path)
 
     doc_product_comparison = Document(temp_path + "/6.product_comparison.docx")
     generate_product_comparison(doc_product_comparison,
