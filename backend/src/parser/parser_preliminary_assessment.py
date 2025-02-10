@@ -103,6 +103,7 @@ def process_product_comparison(table, product_recommendation):
     for i in range(1, len(table.rows[1].cells)):
         for product in product_comparison:
             if product["product name"] == table.rows[1].cells[i].text:
+                product["index"] = i
                 product["loan amount"] = table.cell(2, i).text
                 product["interest rates"] = table.cell(3, i).text
                 product["repayments"] = table.cell(4, i).text

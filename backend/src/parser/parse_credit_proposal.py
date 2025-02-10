@@ -64,6 +64,6 @@ def parser_doc(doc_path):
 
 if __name__ == '__main__':
     filepath = '../../references/Credit Proposal/Delaney & Ralley - Credit Proposal.docx'
-    with open("../document_generation/data/result_credit_proposal.json", "w") as json_file:
+    with open("/result_credit_proposal.json", "w") as json_file:
         json.dump(parser_doc(filepath), json_file, indent=4)
     print(parser_doc(filepath))

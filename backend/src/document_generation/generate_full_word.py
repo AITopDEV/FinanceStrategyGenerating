@@ -401,24 +401,26 @@ def generate_product_comparison(doc, names, product_comparison, result_path):
 
     # Loop through each product and append to the new structure
     for product in product_comparison:
-        transformed_data["Product providers"].append(product.get("product provider", "N/A"))
-        transformed_data["Product names"].append(product.get("product name", "N/A"))
-        transformed_data["Loan amounts"].append(product.get("loan amount", "N/A"))
-        transformed_data["Interest rates"].append(product.get("interest rates", "N/A"))
-        transformed_data["Repayments"].append(product.get("repayments", "N/A"))
-        transformed_data["Features"].append(product.get("features", "N/A"))
-        transformed_data["App fees"].append(product.get("app fee", "N/A"))
-        transformed_data["Monthly fees"].append(product.get("monthly fee", "N/A"))
-        transformed_data["Annual fees"].append(product.get("annual fee", "N/A"))
-        transformed_data["Discharge fees"].append(product.get("discharge fees", "N/A"))
-        transformed_data["Total interest"].append(product.get("total interest", "N/A"))
-        transformed_data["Total monthly fees"].append(product.get("total monthly fees", "N/A"))
-        transformed_data["Total annual fees"].append(product.get("total of annual fees", "N/A"))
-        transformed_data["Total setup costs"].append(product.get("total setup costs", "N/A"))
-        transformed_data["Loan terms"].append(product.get("loan term", "N/A"))
-        transformed_data["Total loan costs"].append(product.get("total loan cost", "N/A"))
-        transformed_data["Savings"].append(product.get("saving", "N/A"))
-        transformed_data["Comparative savings"].append(product.get("comparative saving", "N/A"))
+        for i in range(len(product_comparison)):
+            if i + 1 == product["index"]:
+                transformed_data["Product providers"].append(product.get("product provider", "N/A"))
+                transformed_data["Product names"].append(product.get("product name", "N/A"))
+                transformed_data["Loan amounts"].append(product.get("loan amount", "N/A"))
+                transformed_data["Interest rates"].append(product.get("interest rates", "N/A"))
+                transformed_data["Repayments"].append(product.get("repayments", "N/A"))
+                transformed_data["Features"].append(product.get("features", "N/A"))
+                transformed_data["App fees"].append(product.get("app fee", "N/A"))
+                transformed_data["Monthly fees"].append(product.get("monthly fee", "N/A"))
+                transformed_data["Annual fees"].append(product.get("annual fee", "N/A"))
+                transformed_data["Discharge fees"].append(product.get("discharge fees", "N/A"))
+                transformed_data["Total interest"].append(product.get("total interest", "N/A"))
+                transformed_data["Total monthly fees"].append(product.get("total monthly fees", "N/A"))
+                transformed_data["Total annual fees"].append(product.get("total of annual fees", "N/A"))
+                transformed_data["Total setup costs"].append(product.get("total setup costs", "N/A"))
+                transformed_data["Loan terms"].append(product.get("loan term", "N/A"))
+                transformed_data["Total loan costs"].append(product.get("total loan cost", "N/A"))
+                transformed_data["Savings"].append(product.get("saving", "N/A"))
+                transformed_data["Comparative savings"].append(product.get("comparative saving", "N/A"))
 
     # Transpose data: Fields are rows, providers are columns
     fields = list(transformed_data.keys())  # Rows: Field names
